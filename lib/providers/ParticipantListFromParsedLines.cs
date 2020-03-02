@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace MatchingGame2.lib.providers
 {
-    public class ParticipantListFromCSVProvider : ParticipantListProvider
+    public class ParticipantListFromParsedLines : ParticipantListProvider
     {
         private const String NamePropertyName = "name";
         private const String GenderPropertyName = "gender";
 
         IEnumerable<ParsedLine> _lines;
-        ParticipantListFromCSVProvider(IEnumerable<ParsedLine> lines)
+        public ParticipantListFromParsedLines(IEnumerable<ParsedLine> lines)
         {
             _lines = lines;
         }

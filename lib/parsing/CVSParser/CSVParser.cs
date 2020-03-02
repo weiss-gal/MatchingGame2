@@ -24,7 +24,7 @@ namespace MatchingGame2.lib.parsing.CVSParser
 
     }
 
-    struct ParsedLine
+    public struct ParsedLine
     {
         public uint index;
         public IEnumerable<KeyValuePair<string, string>> items;
