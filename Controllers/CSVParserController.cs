@@ -11,10 +11,6 @@ namespace MatchingGame2.Controllers
     [ApiController]
     public class CSVParserController : ControllerBase
     {
-        public CSVParserController()
-        {
-
-        }
      
         // POST: api/CSVParser
         [HttpPost]

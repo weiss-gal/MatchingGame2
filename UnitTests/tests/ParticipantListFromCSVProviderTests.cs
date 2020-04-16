@@ -26,10 +26,10 @@ namespace UnitTests
         }
     }
 
-    public class ParticipantListFromParsedLinesTests
+    public class ParticipantListFromCSVProviderTests
     {
         [Fact]
-        public void ParticipantListFromParsedLines_ValidInput_ReturnParticipantList()
+        public void ParticipantListFromCSVProvider_ValidInput_ReturnParticipantList()
         {
             // Arrange
             //Name,Weight,MaxMatches,Gender,dating males, dating females,Emma,Olivia,Ava,Isabella,Sophia,Charlotte,Mia,Amelia,Harper,Evelyn,Abigail,Emily,Elizabeth,Mila,Ella,Avery,Sofia,Camila,Aria,Scarlett,Victoria,Madison,Luna,Grace,James,David,Christopher,George,Ronald,John,Richard,Daniel,Kenneth,Anthony,Robert,Charles,Paul,Steven,Kevin,Michael,Joseph,Mark,Edward,Jason,William,Thomas,Donald
