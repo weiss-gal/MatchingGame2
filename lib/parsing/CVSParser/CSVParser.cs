@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using MatchingGame2.lib.infra.Logging;
 using Microsoft.VisualBasic.FileIO;
+using System.IO;
 
 namespace MatchingGame2.lib.parsing.CVSParser
 {
@@ -36,7 +36,7 @@ namespace MatchingGame2.lib.parsing.CVSParser
         }
     }
 
-    class CSVParser
+    public class CSVParser
     {
         private Logger logger;
 
@@ -54,9 +54,11 @@ namespace MatchingGame2.lib.parsing.CVSParser
             return string.Join("; ", items.Select(i => $"({i.Key}, {i.Value})"));
         }
 
-        public IEnumerable<ParsedLine> parse(string fileName, IEnumerable<string> mandatoryFields)
+
+
+        public IEnumerable<ParsedLine> parse(Stream stream, string loggingId, IEnumerable<string> mandatoryFields)
         {
-            var csvParser = new TextFieldParser(fileName);
+            var csvParser = new TextFieldParser(stream);
             csvParser.Delimiters = new string[] { "," };
 
             //Read header line
@@ -65,7 +67,7 @@ namespace MatchingGame2.lib.parsing.CVSParser
             //verify mandatory headers
             var missingHeaders = mandatoryFields.Where(f => !headerFields.Contains(f));
             if (missingHeaders.Count() > 0)
-                throw new ParsingException($"Failed parsing file '{fileName}'. The following headers are missing: {string.Join("; ", missingHeaders)}");
+                throw new ParsingException($"Failed parsing '{loggingId}'. The following headers are missing: {string.Join("; ", missingHeaders)}");
 
             //read line by line
             var parsedLines = new List<ParsedLine>();
@@ -86,8 +88,14 @@ namespace MatchingGame2.lib.parsing.CVSParser
                 lineIndex++;
             }
 
-            logger.Log($"Parsing file '{fileName}' completed, {parsedLines.Count()} data lines read.");
+            logger.Log($"Parsing '{loggingId}' completed, {parsedLines.Count()} data lines read.");
             return parsedLines;
+        }
+
+        public IEnumerable<ParsedLine> parse(string fileName, IEnumerable<string> mandatoryFields)
+        {
+            var stream = new FileStream(fileName, FileMode.Open);
+            return parse(stream, $"file:{fileName}", mandatoryFields);
         }
     }
 }

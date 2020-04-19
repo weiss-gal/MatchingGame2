@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MatchingGame2.lib.parsing.CVSParser;
 
 namespace MatchingGame2
 {
@@ -25,6 +26,7 @@ namespace MatchingGame2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddSingleton<CSVParser, CSVParser>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
