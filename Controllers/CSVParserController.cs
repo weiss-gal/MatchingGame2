@@ -19,12 +19,6 @@ namespace MatchingGame2.Controllers
             _csvParser = p;
         }
 
-        // POST: api/CSVParser
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-            
-            var parsedLines = _csvParser.parse(Request.Body, "HTTP Request body", )
-        }
+      
     }
 }

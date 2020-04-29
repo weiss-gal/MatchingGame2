@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MatchingGame2.lib.parsing.CVSParser;
+using MatchingGame2.database;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+ 
 
 namespace MatchingGame2
 {
@@ -22,11 +26,27 @@ namespace MatchingGame2
 
         public IConfiguration Configuration { get; }
 
+        private readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            services.AddSingleton<CSVParser, CSVParser>();
+            services.AddDbContext<AzureSqlDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+             
+
+            services.AddAutoMapper(typeof(Startup));
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("*");
+                                  });
+            });
+            services.AddControllers().AddNewtonsoftJson();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,7 +57,13 @@ namespace MatchingGame2
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseCors(MyAllowSpecificOrigins);
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
+            }) ;
         }
     }
 }
