@@ -131,7 +131,7 @@ namespace MatchingGame2.Controllers
             _context.Games.Remove(game);
             await _context.SaveChangesAsync();
 
-            return game;
+            return NoContent();
         }
 
         private bool GameExists(int id)

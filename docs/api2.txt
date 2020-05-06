@@ -35,8 +35,14 @@ MVP
 
 
 Future: 
-SSO
+SSO (google, microsoft, yahoo, etc)
 verify email
 management interface
 geo filter
+email notifications 
+- for admin
+- for participants
+- use models for API
+- upload user picture
+- activity pane
 

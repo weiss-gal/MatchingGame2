@@ -26,7 +26,7 @@ namespace MatchingGame2
 
         public IConfiguration Configuration { get; }
 
-        private readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        private readonly string DevelopmentCorsPolicy = "_DevelopmentCorsPolicycd so";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -39,10 +39,12 @@ namespace MatchingGame2
             services.AddAutoMapper(typeof(Startup));
             services.AddCors(options =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
+                options.AddPolicy(name: DevelopmentCorsPolicy,
                                   builder =>
                                   {
-                                      builder.WithOrigins("*");
+                                  builder.WithOrigins("*")
+                                  .WithMethods("*")
+                                  .WithHeaders(new []{ "Content-Type" });
                                   });
             });
             services.AddControllers().AddNewtonsoftJson();
@@ -55,9 +57,9 @@ namespace MatchingGame2
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(DevelopmentCorsPolicy);
             }
 
-            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseRouting();
 
