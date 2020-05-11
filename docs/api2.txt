@@ -42,7 +42,8 @@ geo filter
 email notifications 
 - for admin
 - for participants
-- use models for API
-- upload user picture
-- activity pane
+use models for API
+upload user picture
+activity pane
+soft-delete
 
