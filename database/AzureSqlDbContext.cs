@@ -15,6 +15,7 @@ namespace MatchingGame2.database
 
         }
 
-        public DbSet<Game> Games { get; set; }
+        public DbSet<Game>Games { get; set; }
+        public DbSet<GameView>View_ActiveGames { get; set; }
     }
 }

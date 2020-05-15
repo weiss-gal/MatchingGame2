@@ -3,14 +3,16 @@ using MatchingGame2.database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MatchingGame2.Migrations
 {
     [DbContext(typeof(AzureSqlDbContext))]
-    partial class AzureSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200514214308_add_soft_delete")]
+    partial class add_soft_delete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

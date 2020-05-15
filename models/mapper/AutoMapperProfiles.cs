@@ -12,7 +12,8 @@ namespace MatchingGame2.models.mapper
         public AutoMapperProfiles()
         {
             CreateMap<GameCreateDto, Game>();
-            CreateMap<Game, GamePatchDto>().ReverseMap();
+            CreateMap<GameView, GamePatchDto>().ReverseMap();
+            CreateMap<Game, GameView>();
         }
     }
 }

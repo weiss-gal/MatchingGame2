@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace MatchingGame2.models.game
 {
-    public class Game
+    public class GameView
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public Boolean IsDeleted { get; set; } = false;
+        public string name { get; set; }
     }
 }
