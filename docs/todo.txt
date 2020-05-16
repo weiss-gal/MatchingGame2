@@ -27,14 +27,17 @@ game creation:
 
 
 tasks: 
+======
 MVP
 - support basic matching game
 - support registration and authentication (manually set a user to be gameAdmin)
 - manually distribute game results. 
+- move authentication token to database
 - publish
 
 
-Future: 
+Future:
+=======
 report bugs
 password recovery
 SSO (google, microsoft, yahoo, etc)
