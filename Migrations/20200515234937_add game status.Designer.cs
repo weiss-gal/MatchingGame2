@@ -3,14 +3,16 @@ using MatchingGame2.database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MatchingGame2.Migrations
 {
     [DbContext(typeof(AzureSqlDbContext))]
-    partial class AzureSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200515234937_add game status")]
+    partial class addgamestatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,23 +41,6 @@ namespace MatchingGame2.Migrations
                     b.ToTable("Games");
                 });
 
-            modelBuilder.Entity("MatchingGame2.models.game.GameView", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("View_ActiveGames");
-                });
 #pragma warning restore 612, 618
         }
     }
