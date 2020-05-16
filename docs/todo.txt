@@ -2,7 +2,7 @@ invitation:
 - a game invitation key
 
 users:
-permission: 
+Roles: 
   god mode - can do anything
   game admin - can create a new game
   participant - can join an exiting game

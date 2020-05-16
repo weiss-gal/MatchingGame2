@@ -1,4 +1,5 @@
 ﻿using MatchingGame2.models.game;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MatchingGame2.database
 {
-    public class AzureSqlDbContext : DbContext 
+    public class AzureSqlDbContext : IdentityDbContext 
     {
         public AzureSqlDbContext([NotNullAttribute]DbContextOptions options) : base(options)
         {
