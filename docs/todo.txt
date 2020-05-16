@@ -28,13 +28,15 @@ game creation:
 
 tasks: 
 MVP
-- support for non registered users
-- 
-
-
+- support basic matching game
+- support registration and authentication (manually set a user to be gameAdmin)
+- manually distribute game results. 
+- publish
 
 
 Future: 
+report bugs
+password recovery
 SSO (google, microsoft, yahoo, etc)
 verify email
 management interface
@@ -42,8 +44,8 @@ geo filter
 email notifications 
 - for admin
 - for participants
-use models for API
+use models for API (add decorator class?)
 upload user picture
 activity pane
-soft-delete
+
 
