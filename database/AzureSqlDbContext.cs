@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MatchingGame2.database
 {
-    public class AzureSqlDbContext : IdentityDbContext 
+    public class AzureSqlDbContext : IdentityDbContext<ApplicationUser> 
     {
         public AzureSqlDbContext([NotNullAttribute]DbContextOptions options) : base(options)
         {

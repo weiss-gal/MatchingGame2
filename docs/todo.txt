@@ -30,7 +30,7 @@ tasks:
 ======
 MVP
 - support basic matching game
-- support registration and authentication (manually set a user to be gameAdmin)
+- support registration and authentication (manually set a user to be  gameManager  )
 - manually distribute game results. 
 - move authentication token to database
 - publish
@@ -50,5 +50,6 @@ email notifications
 use models for API (add decorator class?)
 upload user picture
 activity pane
+hebrew support (including RTL)
 
 

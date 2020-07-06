@@ -37,7 +37,7 @@ namespace MatchingGame2
             services.AddAutoMapper(typeof(Startup));
 
             // Authentication and Authorization
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AzureSqlDbContext>()
                 .AddDefaultTokenProviders();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
