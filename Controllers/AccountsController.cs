@@ -50,8 +50,9 @@ namespace MatchingGame2.Controllers
                 issuer: null,
                 audience: null,
                 claims: claims,
-                expires: expiration
-                ); ;
+                expires: expiration,
+                signingCredentials: creds
+                );
 
             return new UserToken()
             {

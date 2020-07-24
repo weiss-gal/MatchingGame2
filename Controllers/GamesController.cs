@@ -7,11 +7,14 @@ using MatchingGame2.database;
 using MatchingGame2.models.game;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace MatchingGame2.Controllers
 {
     [Route("api/games")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class GamesController : ControllerBase
     {
         private readonly AzureSqlDbContext _context;
