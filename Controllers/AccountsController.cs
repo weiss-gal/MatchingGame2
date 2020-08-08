@@ -34,7 +34,7 @@ namespace MatchingGame2.Controllers
             _configuration = configuration;
         }
 
-        private UserToken buildToken(UserInfo userInfo)
+        private UserToken buildToken(UserInfo userInfo, string userId)
         {
             var claims = new List<Claim>()
             {
@@ -69,8 +69,9 @@ namespace MatchingGame2.Controllers
             var result = await _userManager.CreateAsync(newUser, userInfo.Password);
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
+            var userId = await _userManager.GetUserIdAsync(newUser);
 
-            return buildToken(userInfo);
+            return buildToken(userInfo, userId);
         }
 
         [HttpPost("login")]
@@ -81,7 +82,9 @@ namespace MatchingGame2.Controllers
             if (!result.Succeeded)
                 return BadRequest("Invalid login attempt");
 
-            return buildToken(userInfo);
+            var user = await _userManager.FindByNameAsync(userInfo.EmailAddress);
+            var userId = await _userManager.GetUserIdAsync(user);
+            return buildToken(userInfo, userId);
         }
     }
 }
