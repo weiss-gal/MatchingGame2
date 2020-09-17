@@ -19,6 +19,6 @@ namespace MatchingGame2.models.game
         public int Id { get; set; }
         public string Name { get; set; }
         public GameStatus Status { get; set; } = GameStatus.New;
-        public Boolean IsDeleted { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
     }
 }

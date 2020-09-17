@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MatchingGame2.Migrations
 {
     [DbContext(typeof(AzureSqlDbContext))]
-    [Migration("20200917220641_not_clear_what_was_changed")]
-    partial class not_clear_what_was_changed
+    [Migration("20200917225642_test2")]
+    partial class test2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -126,6 +126,32 @@ namespace MatchingGame2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("View_ActiveGames");
+                });
+
+            modelBuilder.Entity("MatchingGame2.models.gameUser.GameAdmin", b =>
+                {
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("GameId", "UserId");
+
+                    b.ToTable("GamesAdmins");
+                });
+
+            modelBuilder.Entity("MatchingGame2.models.gameUser.GameParticipant", b =>
+                {
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("GameId", "UserId");
+
+                    b.ToTable("GamesParticipants");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

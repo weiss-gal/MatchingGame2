@@ -39,7 +39,9 @@ namespace MatchingGame2.Controllers
             var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Name, userInfo.EmailAddress),
-                new Claim(ClaimTypes.Email, userInfo.EmailAddress)
+                new Claim(ClaimTypes.Email, userInfo.EmailAddress),
+                new Claim(ClaimTypes.NameIdentifier, userId)
+
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["jwt:key"]));
