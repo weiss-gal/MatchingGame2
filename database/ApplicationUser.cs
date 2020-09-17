@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using MatchingGame2.models.gameUser;
+using Microsoft.AspNetCore.Identity;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MatchingGame2.database
 {

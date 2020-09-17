@@ -13,6 +13,6 @@ namespace MatchingGame2.models.game
         public string Name { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public GameStatus Status { get; set; } 
+        public GameStatus Status { get; set; }
     }
 }

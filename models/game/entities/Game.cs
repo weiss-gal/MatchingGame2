@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using MatchingGame2.models.gameUser;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
+using System.Collections.Generic;
 
 namespace MatchingGame2.models.game
 {
@@ -19,6 +21,6 @@ namespace MatchingGame2.models.game
         public int Id { get; set; }
         public string Name { get; set; }
         public GameStatus Status { get; set; } = GameStatus.New;
-        public Boolean IsDeleted { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
     }
 }
